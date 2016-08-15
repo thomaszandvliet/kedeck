@@ -49,7 +49,6 @@ public class Player : MonoBehaviour {
 
 		if(col.gameObject.tag == "Enemy") {
 			//Destroy (gameObject); // Destroy player on collision
-			Time.timeScale = 0;
 			dieSound.Play ();
 			Application.LoadLevel("game over");
 		}

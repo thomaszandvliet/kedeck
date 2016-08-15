@@ -3,10 +3,13 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(AudioSource))]
 public class SceneManager : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    public AudioSource dieSound;
+
+    // Use this for initialization
+    void Start () {
 	
 	}
 	
@@ -16,11 +19,13 @@ public class SceneManager : MonoBehaviour {
 	}
 
 	public void StartLevel(){
+        dieSound.Stop();
 		Application.LoadLevel("main world");
 
 	}
 
 	public void MainMenu(){
-		Application.LoadLevel("menu");
+        dieSound.Stop();
+        Application.LoadLevel("menu");
 	}
 }
