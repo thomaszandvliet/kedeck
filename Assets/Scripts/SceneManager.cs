@@ -3,10 +3,8 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-[RequireComponent(typeof(AudioSource))]
 public class SceneManager : MonoBehaviour {
 
-    public AudioSource background_music;
 
     // Use this for initialization
     void Start () {
@@ -19,17 +17,15 @@ public class SceneManager : MonoBehaviour {
 	}
 
 	public void StartLevel(){
-        background_music.Stop();
         Destroy (GameObject.Find("dieSound"));
-        Destroy (GameObject.Find("background_music"));
+        Destroy (GameObject.Find("backgroundmusic"));
         Application.LoadLevel("main world");
 
 	}
 
 	public void MainMenu(){
-        background_music.Stop();
         Destroy(GameObject.Find("dieSound"));
-        Destroy(GameObject.Find("background_music"));
+        Destroy(GameObject.Find("backgroundmusic"));
         Application.LoadLevel("menu");
 	}
 }
