@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(AudioSource))]
 public class SceneManager : MonoBehaviour {
 
-    public AudioSource dieSound;
+    public AudioSource background_music;
 
     // Use this for initialization
     void Start () {
@@ -19,13 +19,17 @@ public class SceneManager : MonoBehaviour {
 	}
 
 	public void StartLevel(){
-        dieSound.Stop();
-		Application.LoadLevel("main world");
+        background_music.Stop();
+        Destroy (GameObject.Find("dieSound"));
+        Destroy (GameObject.Find("background_music"));
+        Application.LoadLevel("main world");
 
 	}
 
 	public void MainMenu(){
-        dieSound.Stop();
+        background_music.Stop();
+        Destroy(GameObject.Find("dieSound"));
+        Destroy(GameObject.Find("background_music"));
         Application.LoadLevel("menu");
 	}
 }
