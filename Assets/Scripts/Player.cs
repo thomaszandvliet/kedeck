@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(AudioSource))]
 public class Player : MonoBehaviour {
 
 	public bool jump = false;
@@ -21,11 +22,7 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKey("up")) {
-			jump = true;
-		}
-
-		if (Input.touchCount > 0) {
+		if(Input.GetKey("up") || Input.touchCount > 0) {
 			jump = true;
 		}
 	}

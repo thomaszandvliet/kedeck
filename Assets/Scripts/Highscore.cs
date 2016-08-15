@@ -28,6 +28,6 @@ public class Highscore : MonoBehaviour {
             PlayerPrefs.SetInt("High Score", highscore);          
         }
 
-        scoreText.text = "Highscore: " + highscore.ToString() + "\nYour Score: " + score.ToString(); ;
+		scoreText.text = "Your Score:\n" + score.ToString() + "\n\nHighscore:\n" + highscore.ToString();
     }
 }
