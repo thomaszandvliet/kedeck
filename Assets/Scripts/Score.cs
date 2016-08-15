@@ -6,24 +6,24 @@ public class Score : MonoBehaviour {
 
 	//public GUIText 
 	public Text scoreText;
-	private int score;
+	public int score;
 
 	public float timeTotal = 0.0f;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+  
 
-	}
-
-	void Awake() {
+    void Awake() {
 		scoreText = GetComponent<Text>();
 	}
 		
 	void Update()
 	{
-		timeTotal += Time.deltaTime;
+        timeTotal += Time.deltaTime;
 		score = (int)(timeTotal * 100);
 
 		scoreText.text = "Score: " + score.ToString();
-	}
+
+        PlayerPrefs.SetInt("Score", score);
+    }
 }
