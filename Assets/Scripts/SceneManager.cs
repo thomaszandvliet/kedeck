@@ -17,6 +17,7 @@ public class SceneManager : MonoBehaviour {
 
 	public void StartLevel(){
 		Application.LoadLevel("main world");
+
 	}
 
 	public void MainMenu(){
