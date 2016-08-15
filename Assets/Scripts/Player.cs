@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
@@ -41,7 +43,9 @@ public class Player : MonoBehaviour {
 		}
 
 		if(col.gameObject.tag == "Enemy") {
-			Destroy (gameObject);
+			//Destroy (gameObject); // Destroy player on collision
+			//Time.timeScale = 0;
+			Application.LoadLevel("game over");
 		}
 	}
 }
