@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour {
 
 	public bool jump = false;
+	public AudioSource jumpSound;
+	public AudioSource dieSound;
 	public float jumpForce = 75f;
 	public float maxSpeed = 75f;
 	private Rigidbody2D rb2d;
@@ -24,8 +26,15 @@ public class Player : MonoBehaviour {
 	void Update () {
 		if(Input.GetKey("up") || Input.touchCount > 0) {
 			jump = true;
+			jumpSound.Play ();
 		}
+
+		if(Input.GetKeyDown("up")){
+			jumpSound.Play ();
+		}
+
 	}
+
 
 	void FixedUpdate() {
 		if(jump){
@@ -42,6 +51,7 @@ public class Player : MonoBehaviour {
 		if(col.gameObject.tag == "Enemy") {
 			//Destroy (gameObject); // Destroy player on collision
 			//Time.timeScale = 0;
+			dieSound.Play ();
 			Application.LoadLevel("game over");
 		}
 	}
