@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour {
 
 	public bool jump = false;
+	private int touchTimer = 0;
 	public AudioSource jumpSound;
 	public AudioSource dieSound;
 	public float jumpForce = 75f;
@@ -26,12 +27,19 @@ public class Player : MonoBehaviour {
 	void Update () {
 		if(Input.GetKey("up") || Input.touchCount > 0) {
 			jump = true;
-			//jumpSound.Play ();
 		}
 
-		if(Input.GetKeyDown("up") || Input.touchCount > 0){
+		if(Input.GetKeyDown("up")){
 			jumpSound.Play ();
 		}
+
+		if (Input.touchCount > 0 && touchTimer < 1) {
+			touchTimer = touchTimer + 1;
+			jumpSound.Play ();
+		} else if (Input.touchCount == 0) {
+			touchTimer = 0;
+		}
+
 	}
 
 
