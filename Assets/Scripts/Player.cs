@@ -29,7 +29,7 @@ public class Player : MonoBehaviour {
 			//jumpSound.Play ();
 		}
 
-		if(Input.GetKeyDown("up")){
+		if(Input.GetKeyDown("up") || Input.touchCount > 0){
 			jumpSound.Play ();
 		}
 	}
