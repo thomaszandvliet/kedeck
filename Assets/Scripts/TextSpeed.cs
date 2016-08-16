@@ -41,7 +41,6 @@ public class TextSpeed : MonoBehaviour {
 		}
 		else if (timer > 1000) {
 			timer = 0;
-//			Debug.Log (timer);
 		}
 			
 	}
