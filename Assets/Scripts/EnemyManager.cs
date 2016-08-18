@@ -29,7 +29,7 @@ public class EnemyManager : MonoBehaviour {
 		score = (int)(timeTotal * 100);
 
 
-		if (score >= 1000 && spawnTwo == false) {
+		if (score >= 2500 && spawnTwo == false) {
 			InvokeRepeating("SpawnEnemyTwo", 1f, spawnTimeTwo);
 			spawnTwo = true;	
 		}
