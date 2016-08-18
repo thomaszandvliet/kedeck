@@ -23,7 +23,6 @@ public class EnemyOne : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//Instantiate (gameObject, spawnPosition.x, spawnPosition.y);
 	}
 
 	void FixedUpdate() {

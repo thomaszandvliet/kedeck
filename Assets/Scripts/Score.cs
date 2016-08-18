@@ -4,7 +4,6 @@ using System.Collections;
 
 public class Score : MonoBehaviour {
 
-	//public GUIText 
 	public Text scoreText;
 	public int score;
 
