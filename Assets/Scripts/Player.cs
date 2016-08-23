@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(AudioSource))]
 public class Player : MonoBehaviour {
+	//private static Player _instance;
 
 	public bool jump = false;
 	private int touchTimer = 0;
@@ -13,14 +14,35 @@ public class Player : MonoBehaviour {
 	public float jumpForce = 75f;
 	public float maxSpeed = 75f;
 	private Rigidbody2D rb2d;
+	public int lifePoints;
+
+	/*public static Player Instance {
+		get {
+			if (_instance == null) {
+				_instance = GameObject.FindObjectOfType<Player> ();
+			
+
+				if (_instance == null) {
+					GameObject container = new GameObject ("Player");
+				}
+			}
+
+			return _instance;
+		}
+	}*/
 
 	// Use this for initialization
 	void Start () {
-		
+		lifePoints = 1;
 	}
 
 	void Awake() {
 		rb2d = GetComponent<Rigidbody2D> ();
+	}
+
+	public int getLifePoints() {
+		Debug.Log (lifePoints);
+		return this.lifePoints;
 	}
 	
 	// Update is called once per frame
@@ -55,10 +77,19 @@ public class Player : MonoBehaviour {
 			rb2d.velocity = new Vector2(0f, 0f);
 		}
 
+		if (col.gameObject.name == "extraLife") {
+			if (lifePoints == 0) {
+				lifePoints++;
+			}
+		}
+
 		if(col.gameObject.tag == "Enemy") {
-			//Destroy (gameObject); // Destroy player on collision
 			dieSound.Play ();
-			Application.LoadLevel("game over");
+			if (lifePoints == 0) {
+				Application.LoadLevel ("game over");
+			} else {
+				lifePoints--;
+			}
 		}
 	}
 }

@@ -32,7 +32,7 @@ public class EnemyOne : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D col) {
 		if(col.gameObject.tag == "Player") {
-			//Destroy (gameObject); // Destroy Enemy on Collision with Player
+			Destroy (gameObject); // Destroy Enemy on Collision with Player
 		}
 		if (col.gameObject.tag == "EnemyDestroyer") {
 			Destroy (gameObject);
