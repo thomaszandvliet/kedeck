@@ -20,7 +20,7 @@ public class PickupManager : MonoBehaviour {
 
 		if (lifePoints == 0) {
 			if (spawnRate == 0)
-				spawnRate = Random.Range (1750, 3000);
+				spawnRate = Random.Range (1250, 1750);
 
 			if (i == spawnRate) {
 				spawnRate = 0;

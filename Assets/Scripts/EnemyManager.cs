@@ -12,22 +12,30 @@ public class EnemyManager : MonoBehaviour {
 	public float spawnTimeThree = 5f;
 	public int score;
 	public bool spawnTwo;
+	public bool spawnThree;
 	public float timeTotal = 0.0f;
 
 	void Awake () { }
 
 	void Start () {
+		spawnTwo = false;
+		spawnThree = false;
+
 		InvokeRepeating("SpawnEnemyOne", 1f, spawnTimeOne);
-        InvokeRepeating("SpawnEnemyThree", 1f, spawnTimeThree);
 	}
 
 	void Update () {
 		timeTotal += Time.deltaTime;
 		score = (int)(timeTotal * 100);
 
-		if (score >= 2500 && spawnTwo == false) {
+		if (score >= 3000 && spawnTwo == false) {
 			InvokeRepeating("SpawnEnemyTwo", 1f, spawnTimeTwo);
 			spawnTwo = true;	
+		}
+
+		if (score >= 1000 && spawnThree == false) {
+			InvokeRepeating("SpawnEnemyThree", 1f, spawnTimeThree);
+			spawnThree = true;	
 		}
 	}
 

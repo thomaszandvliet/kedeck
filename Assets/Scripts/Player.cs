@@ -51,10 +51,6 @@ public class Player : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D col) {
 		if(col.gameObject.name == "Wall")
 			rb2d.velocity = new Vector2(0f, 0f);
-
-		if (col.gameObject.name == "extraLife")
-			if (lifePoints == 0)
-				lifePoints++;
 		
 		if(col.gameObject.tag == "Enemy") {
 			dieSound.Play ();
