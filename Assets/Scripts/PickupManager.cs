@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class PickupManager : MonoBehaviour {
 	private int lifePoints;
 	public GameObject healthPickup;
-	public int spawnRate;
+	private int spawnRate;
 	private int i;
 
 	void Start () {	
