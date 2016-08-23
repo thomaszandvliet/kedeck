@@ -9,6 +9,7 @@ public class Player : MonoBehaviour {
 	private int touchTimer = 0;
 	public AudioSource jumpSound;
 	public AudioSource dieSound;
+	public AudioSource pickupSound;
 	public float jumpForce = 75f;
 	public float maxSpeed = 75f;
 	private Rigidbody2D rb2d;
@@ -23,7 +24,6 @@ public class Player : MonoBehaviour {
 	}
 
 	public int getLifePoints() {
-		Debug.Log (lifePoints);
 		return this.lifePoints;
 	}
 	
@@ -62,6 +62,12 @@ public class Player : MonoBehaviour {
 				Application.LoadLevel ("game over");
 			else
 				lifePoints--;
+		}
+
+		if(col.gameObject.tag == "HealthPickup") {
+			pickupSound.Play ();
+			if (lifePoints == 0)
+				lifePoints++;
 		}
 	}
 }

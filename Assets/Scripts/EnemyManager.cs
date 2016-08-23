@@ -6,7 +6,7 @@ public class EnemyManager : MonoBehaviour {
 	public GameObject enemyOne;
 	public GameObject enemyTwo;
 	public float spawnTimeOne = 0.5f;
-	public float spawnTimeTwo = 0f;
+	public float spawnTimeTwo = 5f;
 	public int score;
 	public bool spawnTwo;
 	public float timeTotal = 0.0f;

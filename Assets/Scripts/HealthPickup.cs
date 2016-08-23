@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyOne : MonoBehaviour {
+public class HealthPickup : MonoBehaviour {
 	private Rigidbody2D rb2d;
 
 	void Start () { }
@@ -9,7 +9,7 @@ public class EnemyOne : MonoBehaviour {
 	void Awake() {
 		rb2d = GetComponent<Rigidbody2D> ();
 	}
-	
+
 	void Update () { }
 
 	void FixedUpdate() {
