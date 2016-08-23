@@ -6,6 +6,7 @@ public class EnemyManager : MonoBehaviour {
 
 	public GameObject enemyOne;
 	public GameObject enemyTwo;
+    public GameObject enemyThree;
 
 
 	public float spawnTimeOne = 0.5f;
@@ -20,6 +21,7 @@ public class EnemyManager : MonoBehaviour {
 
 	void Start () {
 		InvokeRepeating("SpawnEnemyOne", 1f, spawnTimeOne);
+        InvokeRepeating("SpawnEnemyThree", 1f, spawnTimeOne);
 	}
 
 
@@ -52,4 +54,23 @@ public class EnemyManager : MonoBehaviour {
 
 		Instantiate (enemyTwo, spawnPosition, Quaternion.Euler(0,0,270));
 	}
+
+    void SpawnEnemyThree()
+    {
+        //int SpawnLocation = Random.Range(0, 1);
+        if (Random.Range(0, 2) == 0)
+        {
+            float spawnY = Random.Range(((-Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height / 6)).y) + 0.0f), (Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height * 1.3f)).y - 0.6f));
+            Vector2 spawnPosition = new Vector2(Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)).x + 1, spawnY);
+            Instantiate(enemyThree, spawnPosition, Quaternion.Euler(0, 0, 0));
+        }
+        else
+            {
+            float spawnY = Random.Range(((-Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height * 1.15f)).y) - 0.6f), (Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height / 6)).y + 0.0f));
+            Vector2 spawnPosition = new Vector2(Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)).x + 1, spawnY);
+            Instantiate(enemyThree, spawnPosition, Quaternion.Euler(0, 0, 0));
+        }
+
+       
+    }
 }
