@@ -9,6 +9,7 @@ public class EnemyManager : MonoBehaviour {
 
 	public float spawnTimeOne = 0.5f;
 	public float spawnTimeTwo = 5f;
+	public float spawnTimeThree = 5f;
 	public int score;
 	public bool spawnTwo;
 	public float timeTotal = 0.0f;
@@ -17,7 +18,7 @@ public class EnemyManager : MonoBehaviour {
 
 	void Start () {
 		InvokeRepeating("SpawnEnemyOne", 1f, spawnTimeOne);
-        InvokeRepeating("SpawnEnemyThree", 1f, spawnTimeOne);
+        InvokeRepeating("SpawnEnemyThree", 1f, spawnTimeThree);
 	}
 
 	void Update () {
