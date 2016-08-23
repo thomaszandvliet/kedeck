@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(AudioSource))]
 public class Player : MonoBehaviour {
-
 	public bool jump = false;
 	private int touchTimer = 0;
 	public AudioSource jumpSound;
@@ -13,35 +12,34 @@ public class Player : MonoBehaviour {
 	public float jumpForce = 75f;
 	public float maxSpeed = 75f;
 	private Rigidbody2D rb2d;
+	public int lifePoints;
 
-	// Use this for initialization
 	void Start () {
-		
+		lifePoints = 1;
 	}
 
 	void Awake() {
 		rb2d = GetComponent<Rigidbody2D> ();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		if(Input.GetKey("up") || Input.touchCount > 0) {
-			jump = true;
-		}
 
-		if(Input.GetKeyDown("up")){
+	public int getLifePoints() {
+		Debug.Log (lifePoints);
+		return this.lifePoints;
+	}
+	
+	void Update () {
+		if(Input.GetKey("up") || Input.touchCount > 0)
+			jump = true;
+
+		if(Input.GetKeyDown("up"))
 			jumpSound.Play ();
-		}
 
 		if (Input.touchCount > 0 && touchTimer < 1) {
 			touchTimer = touchTimer + 1;
 			jumpSound.Play ();
-		} else if (Input.touchCount == 0) {
+		} else if (Input.touchCount == 0)
 			touchTimer = 0;
-		}
-
 	}
-
 
 	void FixedUpdate() {
 		if(jump){
@@ -51,14 +49,19 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D col) {
-		if(col.gameObject.name == "Wall") {
+		if(col.gameObject.name == "Wall")
 			rb2d.velocity = new Vector2(0f, 0f);
-		}
 
+		if (col.gameObject.name == "extraLife")
+			if (lifePoints == 0)
+				lifePoints++;
+		
 		if(col.gameObject.tag == "Enemy") {
-			//Destroy (gameObject); // Destroy player on collision
 			dieSound.Play ();
-			Application.LoadLevel("game over");
+			if (lifePoints == 0)
+				Application.LoadLevel ("game over");
+			else
+				lifePoints--;
 		}
 	}
 }
